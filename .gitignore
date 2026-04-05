@@ -1,0 +1,19 @@
+# dotfiles and dot-directories
+.*
+!.gitignore
+
+# dependencies
+node_modules/
+
+# build output
+dist/
+build/
+out/
+
+# logs
+*.log
+npm-debug.log*
+
+# OS
+Thumbs.db
+Desktop.ini

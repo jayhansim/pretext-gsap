@@ -1,0 +1,84 @@
+:root {
+  --background-red: #A1101C;
+}
+
+@font-face {
+  font-family: 'Coconat';
+  src: url('../font/Coconat-Regular.woff2') format('woff2'),
+       url('../font/Coconat-Regular.woff') format('woff'),
+       url('../font/Coconat-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.graphic {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #eee;
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width:  clamp(300px, 40vw, 600px);
+  
+  animation-name: grow;
+  animation-duration: 0.8s;        /* How long the growth takes */
+  animation-delay: 1s;           /* 1 second delay to start */
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;      /* Ensures it stays at scale 1 after finishing */
+}
+
+.frame::before {
+  content: '';
+  position: absolute;
+  inset: -12%;
+  background-image: url('../img/frame-shadow.png');
+  background-size: 100% 100%;
+  z-index: -1;
+  margin-right: -20%;
+  margin-bottom: -20%;
+}
+
+.noise {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/noise.png');
+  background-size: 240px;
+  mix-blend-mode: soft-light;
+  left: 0;
+  top: 0
+}
+
+.graphic-red {
+  background-color: var(--background-red);
+}
+
+.graphic-red .graphic-text {
+  color: #570001;
+  /* text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2); */
+}
+
+.graphic-text {
+  font-family: 'Coconat', sans-serif;
+  font-size: clamp(40px, 5vw, 80px);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  text-align: justify;
+  /* text-wrap: pretty; */
+}
