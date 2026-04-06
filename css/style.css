@@ -35,11 +35,13 @@
   left: 50%;
   translate: -50% -50%;
   width:  clamp(300px, 40vw, 600px);
-  
+}
+
+.frame-animate {
   animation-name: grow;
-  animation-duration: 0.8s;        /* How long the growth takes */
+  animation-duration: 1s;        /* How long the growth takes */
   animation-delay: 1s;           /* 1 second delay to start */
-  animation-timing-function: ease-in-out;
+  animation-timing-function: cubic-bezier(0.66, 0, 0.34, 1);
   animation-fill-mode: both;      /* Ensures it stays at scale 1 after finishing */
 }
 
@@ -75,6 +77,7 @@
 }
 
 .graphic-text {
+  visibility: hidden;
   font-family: 'Coconat', sans-serif;
   font-size: clamp(40px, 5vw, 80px);
   line-height: 1.05;
