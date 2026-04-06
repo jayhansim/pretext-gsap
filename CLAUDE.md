@@ -12,11 +12,14 @@ npx serve .   # or any static file server
 
 ## Architecture
 
-This is a single-page canvas text-layout experiment. The core idea: render repeating fashion editorial text on a `<canvas>` that wraps around a centered `.frame` image, using the `@chenglou/pretext` library for precise text measurement without DOM reflow.
+There are two HTML entry points with different approaches:
+
+- **`index-canvas.html`** — the canvas text-layout experiment. Uses `@chenglou/pretext` to render repeating fashion editorial text on a `<canvas>` that wraps around a centered `.frame` image. Text is stored in the canvas's `data-text` attribute. Uses `.frame-animate` class.
+- **`index.html`** — a DOM-based version. Uses a `<p class="graphic-text">` element for the text. Loads GSAP (v3.14.2) and TextPlugin via CDN for animation.
 
 ### Key files
 
-- **`js/text-flow.js`** — all rendering logic. On each `render()` call it:
+- **`js/text-flow.js`** — all canvas rendering logic (used by `index-canvas.html`). On each `render()` call it:
   1. Measures `.graphic` and `.frame` bounding rects
   2. Computes per-frame padding (exclusion zone around the image)
   3. Iterates lines top-to-bottom; lines that overlap the frame are split into left/right columns, others span full width
